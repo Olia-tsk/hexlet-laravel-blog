@@ -11,5 +11,6 @@ Route::get('posts', function () {
 })->name('posts.store');
 
 Route::get('about', function () {
-    return view('about');
+    $tags = ['education', 'programming', 'php', 'oop'];
+    return view('about', ['tags' => $tags]);
 })->name('about');
