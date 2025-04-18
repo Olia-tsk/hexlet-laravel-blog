@@ -9,3 +9,7 @@ Route::get('/', function () {
 Route::get('posts', function () {
     // logic
 })->name('posts.store');
+
+Route::get('about', function () {
+    return view('about');
+})->name('about');
