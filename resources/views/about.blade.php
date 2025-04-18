@@ -1,2 +1,9 @@
-<h1>О блоге</h1>
-<p>Эксперименты с Laravel на Хекслете</p>
+@extends('layouts.app')
+
+@section('title', 'About blog')
+
+@section('header', 'About blog')
+
+@section('content')
+    <p>Experimenting with Laravel on Hexlet</p>
+@endsection
