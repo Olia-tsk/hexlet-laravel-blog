@@ -3,5 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return "Hello there";
 });
+
+Route::get('posts', function () {
+    // logic
+})->name('posts.store');
