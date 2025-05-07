@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateArticleRequest;
 use App\Models\Article;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -41,6 +42,27 @@ class ArticleController extends Controller
         $article->save();
 
         Session::flash('flash_message', 'Article added');
+
+        return redirect()->route('articles.index');
+    }
+
+    public function edit($id)
+    {
+        $article = Article::findOrFail($id);
+
+        return view('article.edit', compact('article'));
+    }
+
+    public function update(UpdateArticleRequest $request, $id)
+    {
+        $article = Article::findOrFail($id);
+
+        $data = $request->validated();
+
+        $article->fill($data);
+        $article->save();
+
+        Session::flash('flash_message', 'Article successfully updated');
 
         return redirect()->route('articles.index');
     }
