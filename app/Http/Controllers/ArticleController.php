@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class ArticleController extends Controller
 {
@@ -19,5 +20,28 @@ class ArticleController extends Controller
         $article = Article::findOrFail($id);
 
         return view('article.show', compact('article'));
+    }
+
+    public function create()
+    {
+        $article = new Article();
+
+        return view('article.create', compact('article'));
+    }
+
+    public function store(Request $request)
+    {
+        $data = $request->validate([
+            'name' => 'required|unique:articles',
+            'body' => 'required|min:100',
+        ]);
+
+        $article = new Article();
+        $article->fill($data);
+        $article->save();
+
+        Session::flash('flash_message', 'Article added');
+
+        return redirect()->route('articles.index');
     }
 }
