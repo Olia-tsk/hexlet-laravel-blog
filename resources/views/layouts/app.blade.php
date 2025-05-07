@@ -14,7 +14,7 @@
 <body>
     <nav>
         <a href="{{ route('articles.index') }}">Articles</a>
-
+        <a href="{{ route('articles.create') }}">Create new article</a>
     </nav>
 
     @yield('messages')
