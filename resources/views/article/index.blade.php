@@ -23,5 +23,7 @@
         </h2>
 
         <div>{{ Str::limit($article->body, 200) }}</div>
+
+        <a href="{{ route('articles.edit', ['id' => $article->id]) }}">Edit article</a>
     @endforeach
 @endsection
