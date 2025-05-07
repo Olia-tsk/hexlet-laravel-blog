@@ -14,8 +14,11 @@
 <body>
     <nav>
         <a href="{{ route('articles.index') }}">Articles</a>
-        
+
     </nav>
+
+    @yield('messages')
+
     <div class="container mt-4">
         <h1>@yield('header')</h1>
         <div>
