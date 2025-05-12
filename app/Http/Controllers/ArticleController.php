@@ -11,16 +11,9 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        $articles = Article::paginate();
+        $articles = Article::orderBy('id', 'desc')->get();
 
         return view('article.index', compact('articles'));
-    }
-
-    public function show($id)
-    {
-        $article = Article::findOrFail($id);
-
-        return view('article.show', compact('article'));
     }
 
     public function create()
@@ -46,17 +39,18 @@ class ArticleController extends Controller
         return redirect()->route('articles.index');
     }
 
-    public function edit($id)
+    public function show(Article $article)
     {
-        $article = Article::findOrFail($id);
+        return view('article.show', compact('article'));
+    }
 
+    public function edit(Article $article)
+    {
         return view('article.edit', compact('article'));
     }
 
-    public function update(UpdateArticleRequest $request, $id)
+    public function update(UpdateArticleRequest $request, Article $article)
     {
-        $article = Article::findOrFail($id);
-
         $data = $request->validated();
 
         $article->fill($data);
@@ -67,10 +61,8 @@ class ArticleController extends Controller
         return redirect()->route('articles.index');
     }
 
-    public function destroy($id)
+    public function destroy(Article $article)
     {
-        $article = Article::find($id);
-
         if ($article) {
             $article->delete();
         }
