@@ -8,7 +8,12 @@
     </div>
 @endif
 
-{{ html()->label('Имя', 'name') }}
-{{ html()->input('text', 'name') }}
-{{ html()->label('Содержание', 'body') }}
-{{ html()->textarea('body') }}
+<div class="mb-3">
+    {{ html()->label('Title', 'name')->class('form-label') }}
+    {{ html()->input('text', 'name')->class('form-control') }}
+</div>
+
+<div class="mb-3">
+    {{ html()->label('Content', 'body')->class('form-label') }}
+    {{ html()->textarea('body')->class('form-control')->rows(5) }}
+</div>
