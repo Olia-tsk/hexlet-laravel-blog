@@ -17,7 +17,7 @@
         <div class="card mb-4">
             <div class="card-body">
                 <h5 class="card-title">
-                    <a href="{{ route('articles.show', ['id' => $article->id]) }}">{{ $article->name }}</a>
+                    <a href="{{ route('articles.show', $article) }}">{{ $article->name }}</a>
                 </h5>
                 <p class="card-text">
                 <div>{{ Str::limit($article->body, 200) }}</div>
