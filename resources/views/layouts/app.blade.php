@@ -12,14 +12,23 @@
 </head>
 
 <body>
-    <nav>
-        <a href="{{ route('articles.index') }}">Articles</a>
-        <a href="{{ route('articles.create') }}">Create new article</a>
-    </nav>
+    <div class="container container-fluid mb-4 mt-2">
+        <ul class="nav nav-underline">
+            <li class="nav-item">
+                <a href="{{ route('articles.index') }}" class="nav-link">Articles</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('articles.create') }}" class="nav-link">Create new article</a>
+            </li>
+
+        </ul>
+    </div>
+
+
 
     @yield('messages')
 
-    <div class="container mt-4">
+    <div class="container">
         <h1>@yield('header')</h1>
         <div>
             @yield('content')
