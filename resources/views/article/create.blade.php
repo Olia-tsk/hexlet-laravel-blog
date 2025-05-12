@@ -7,6 +7,6 @@
 
     @include('article.form')
 
-    {{ html()->submit('Создать') }}
+    {{ html()->submit('Create')->class('btn btn-primary') }}
     {{ html()->closeModelForm() }}
 @endsection
